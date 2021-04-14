@@ -71,7 +71,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'farm_project.urls'
+ROOT_URLCONF = 'fm_project.urls'
 
 
 REST_FRAMEWORK = {
@@ -148,7 +148,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'farm_project.wsgi.application'
+WSGI_APPLICATION = 'fm_project.wsgi.application'
 
 
 # Database
