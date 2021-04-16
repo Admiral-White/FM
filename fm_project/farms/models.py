@@ -22,6 +22,37 @@ class NumberOfEmployees(models.TextChoices):
     HUNDRED_ABOVE = 'hundred_above'
 
 
+class PaymentMethod(models.TextChoices):
+    BANK_TRANSFER = 'bank_transfer'
+    CHEQUE = 'cheque'
+    AMERICAN_EXPRESS = 'american_express'
+    MASTER_CARD = 'master_card'
+    VERVE = 'verve'
+    PAYPAL = 'paypal'
+
+
+class Rating(models.TextChoices):
+    NOT_RATED = 'not_rated'
+    ONE_STAR = 'one_star'
+    TWO_STAR = 'two_star'
+    THREE_STAR = 'three_star'
+    FOUR_STAR = 'four_star'
+    FIVE_STAR = 'five_star'
+
+
+class ProductCondition(models.TextChoices):
+    DRIED = 'dried'
+    FRESH = 'fresh'
+    NEW = 'new'
+    USED = 'used'
+    REFURBISHED = 'refurbished'
+
+
+class ProductAvailability(models.TextChoices):
+    IN_STOCK = 'in_stock'
+    OUT_OF_STOCK = 'out_of_stock'
+
+
 class Gender(models.TextChoices):
     MALE = 'male'
     FEMALE = 'female'
@@ -42,11 +73,6 @@ class UnitOfMeasurement(models.TextChoices):
     PIECE = 'piece'
     FEET = 'feet'
     PACK = 'pack'
-
-
-class PaymentMethod(models.TextChoices):
-    BANK_TRANSFER = 'bank_transfer'
-    CHEQUE = 'cheque'
 
 
 class AccountType(models.TextChoices):
@@ -224,6 +250,7 @@ class Customer(models.Model):
     date_of_birth = models.DateField()
     address = models.ForeignKey(Address, on_delete=models.CASCADE, null=True)
     gender = models.CharField(max_length=7, choices=[(tag, tag.value) for tag in Gender], null=True)
+    identityType = models.CharField(max_length=7, choices=[(tag, tag.value) for tag in MeansOfIdentification], null=True)
     email = models.EmailField(unique=True)
     phone_number = models.CharField(max_length=11, unique=True)
     country = models.ForeignKey(Country, on_delete=models.CASCADE, null=True)
@@ -238,9 +265,12 @@ class Customer(models.Model):
 
 class Supplier(models.Model):
     rc_number = models.CharField(max_length=250, unique=True)
-    company_name = models.CharField(max_length=250)
+    company_name = models.CharField(max_length=250, unique=True)
     phone_number = models.CharField(max_length=250, unique=True)
     email_address = models.EmailField(unique=True)
+    businessEntity = models.CharField(max_length=25, choices=[(tag, tag.value) for tag in BusinessEntity], null=True)
+    identityType = models.CharField(max_length=30, choices=[(tag, tag.value) for tag in MeansOfIdentification], null=True)
+    numberOfEmployee = models.CharField(max_length=30, choices=[(tag, tag.value) for tag in NumberOfEmployees], null=True)
     gender = models.CharField(max_length=7, choices=[(tag, tag.value) for tag in Gender], null=True)
     supplier_type = models.CharField(max_length=50, choices=[(tag, tag.value) for tag in SupplierType], null=True)
     address = models.ForeignKey(Address, on_delete=models.CASCADE, null=True)
@@ -260,6 +290,9 @@ class Product(models.Model):
     product_category = models.CharField(max_length=50, choices=[(tag, tag.value) for tag in ProductCategory], null=True)
     size = models.CharField(max_length=50, choices=[(tag, tag.value) for tag in Size], null=True)
     unit_of_measurement = models.CharField(max_length=50, choices=[(tag, tag.value) for tag in UnitOfMeasurement], null=True)
+    rating = models.CharField(max_length=25, choices=[(tag, tag.value) for tag in Rating], null=True)
+    product_condition = models.CharField(max_length=25, choices=[(tag, tag.value) for tag in ProductCondition], null=True)
+    product_availability = models.CharField(max_length=25, choices=[(tag, tag.value) for tag in ProductAvailability], null=True)
     color = models.CharField(max_length=250)
     weight = models.CharField(max_length=250)
     price = models.DecimalField(max_digits=11, decimal_places=2)
