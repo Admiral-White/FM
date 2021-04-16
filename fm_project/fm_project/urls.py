@@ -33,7 +33,7 @@ urlpatterns = [
     path('farms/', include('farms.urls')),
     path('api/', include('api.urls')),
     path('api-auth/', include('rest_framework.urls')),  # used for authorization b4 accessing api views
-    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),  # used by simple jwt to obtaintoken
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),  # used by simple jwt to obtain token
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),  # used by simple jwt to refresh token
     path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),  # used by simple jwt to verify token
     path('', TemplateView.as_view(template_name='home.html'), name='home'),  # using the inbuilt template view

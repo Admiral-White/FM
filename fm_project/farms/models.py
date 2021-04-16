@@ -3,6 +3,25 @@ from django.db import models
 # Create your models here.
 
 
+class BusinessEntity(models.TextChoices):
+    INDIVIDUAL = 'individual'
+    COMPANY = 'company'
+
+
+class MeansOfIdentification(models.TextChoices):
+    NIN = 'nin'
+    VOTERS_CARD = 'voters_card'
+    DRIVERS_LICENSE = 'drivers_license'
+    INTERNATIONAL_PASSPORT = 'international_passport'
+
+
+class NumberOfEmployees(models.TextChoices):
+    ONE_THREE = 'one_three'
+    FOUR_ELEVEN = 'four_eleven'
+    TWELVE_HUNDRED = 'twelve_hundred'
+    HUNDRED_ABOVE = 'hundred_above'
+
+
 class Gender(models.TextChoices):
     MALE = 'male'
     FEMALE = 'female'
