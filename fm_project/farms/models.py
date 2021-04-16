@@ -250,7 +250,7 @@ class Customer(models.Model):
     date_of_birth = models.DateField()
     address = models.ForeignKey(Address, on_delete=models.CASCADE, null=True)
     gender = models.CharField(max_length=7, choices=[(tag, tag.value) for tag in Gender], null=True)
-    identityType = models.CharField(max_length=7, choices=[(tag, tag.value) for tag in MeansOfIdentification], null=True)
+    identityType = models.CharField(max_length=30, choices=[(tag, tag.value) for tag in MeansOfIdentification], null=True)
     email = models.EmailField(unique=True)
     phone_number = models.CharField(max_length=11, unique=True)
     country = models.ForeignKey(Country, on_delete=models.CASCADE, null=True)
