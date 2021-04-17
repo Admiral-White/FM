@@ -297,6 +297,7 @@ class Product(models.Model):
     weight = models.CharField(max_length=250)
     price = models.DecimalField(max_digits=11, decimal_places=2)
     supplier = models.ForeignKey(Supplier, on_delete=models.SET_NULL, null=True)
+    product_image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
 
     def __str__(self):
         return "%s %s %s" % (self.product_name, self.product_description, self.price)
