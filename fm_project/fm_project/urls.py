@@ -43,7 +43,7 @@ urlpatterns = [
     path('swagger-docs', swagger_view),
     path('schema', schema_view),
 ]
-
+# config below is used for the image field added in the product model class
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

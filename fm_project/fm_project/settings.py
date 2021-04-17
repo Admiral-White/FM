@@ -193,7 +193,7 @@ SWAGGER_SETTINGS = {
     'LOGOUT_URL': 'rest_framework:logout',
 
 }
-
+# used for the image field on the product class
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
