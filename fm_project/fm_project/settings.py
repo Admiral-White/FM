@@ -224,3 +224,10 @@ pip install -e git+https://github.com/gbozee/pypaystack.git@master#egg=pypaystac
 """
 
 # lets see if this works out fine for us
+
+"""LOGIN FOR USER:
+Username: steeve
+Password: semicolon111
+Login for Admin:
+Username: farmer
+Password: semicolon111"""
